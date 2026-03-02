@@ -1,0 +1,126 @@
+<div class="container-fluid p-4">
+
+  <h1 class="mb-4">Stock Movement</h1>
+
+  <!-- FILTER -->
+    <div class="row mb-3">
+
+      <div class="col-md-2">
+        <select id="movementYear" class="form-select"></select>
+      </div>
+    
+      <div class="col-md-3">
+        <select id="movementMonth" class="form-select">
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+    
+      <div class="col-md-3">
+        <select id="movementCategory"
+                class="form-select"
+               >
+        </select>
+      </div>
+    
+      <div class="col-md-2">
+        <button class="btn btn-primary w-100"
+                onclick="loadMovement()">
+          Load Movement
+        </button>
+      </div>
+      
+      <div class="col-md-2">
+        <button onclick="downloadMovementExcel()"
+        class="btn btn-success  w-100">
+      Download Excel
+      </button>
+      </div>
+    </div>
+
+
+
+  <!-- ================================= -->
+  <!-- SUMMARY TABLE (PIVOT / EXCEL STYLE) -->
+  <!-- ================================= -->
+
+  <div class="card mb-4">
+
+    <div class="card-header fw-bold">
+      Monthly Movement Summary
+    </div>
+  
+    <div class="card-body p-0">
+  
+      <div class="table-responsive">
+  
+        <table class="table table-bordered table-sm">
+  
+          <!-- HEADER -->
+          <thead id="movementSummaryHeader"></thead>
+  
+          <!-- BODY -->
+          <tbody id="movementSummaryBody"></tbody>
+  
+        </table>
+  
+      </div>
+  
+    </div>
+  
+  </div>
+
+
+  <!-- ================================= -->
+  <!-- DETAIL TABLE (YOUR EXISTING TABLE) -->
+  <!-- ================================= -->
+
+  <div class="card">
+
+    <div class="card-header fw-bold">
+      Movement Detail
+    </div>
+
+    <div class="card-body p-0">
+
+      <div class="table-responsive">
+
+        <table class="table table-bordered">
+
+          <thead class="table-light">
+
+            <tr>
+              <th>Date</th>
+              <th>Item</th>
+              <th>Restock</th>
+              <th>Return</th>
+              <th>Sales</th>
+
+
+            </tr>
+
+          </thead>
+
+          <tbody id="movementTableBody">
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

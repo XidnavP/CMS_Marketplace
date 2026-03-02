@@ -1,0 +1,110 @@
+
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
+.sidebar.collapsed {
+  width: 55px;
+}
+
+.sidebar.collapsed .text {
+  display: none;
+}
+
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  padding: 12px 16px;
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
+}
+
+.sidebar a,
+.sidebar a:visited,
+.sidebar a:active {
+  color: #f8f9fa; /* Bootstrap light */
+  text-decoration: none;
+}
+
+/* Hover state */
+.sidebar a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.sidebar .icon {
+  width: 24px;
+  text-align: center;
+}
+
+.sidebar nav a {
+  display: block;
+  padding: 12px 16px;
+  white-space: nowrap;
+}
+
+.sidebar nav,
+.sidebar.menu{
+  padding-top: 56px;
+  
+}
+
+
+.toggle-btn {
+  position: absolute;
+  top: 12px;
+  right:12px;
+  color: #f8f9fa;           /* light icon */
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+}
+
+/* Optional hover */
+.toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+#mainContent {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #f8f9fa; /* optional */
+  padding: 1.5rem;
+}
+
+/* Sidebar logout button reset */
+.sidebar .logout-btn {
+  background: transparent;
+  color: #f8f9fa;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Hover state */
+.sidebar .logout-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}

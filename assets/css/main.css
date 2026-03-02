@@ -1,0 +1,65 @@
+/* ===== Centered Form Wrapper ===== */
+.center-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #5f5f5f, #8f8f8f);
+  }
+  
+  /* ===== Glass / Translucent Container ===== */
+  /* ===== Silver Dialog Container ===== */
+.silver-dialog {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+  
+    border-radius: 14px;
+  
+    background:
+      linear-gradient(
+        180deg,
+        rgba(245, 246, 248, 0.95),
+        rgba(225, 228, 232, 0.95)
+      );
+  
+    border: 1px solid rgba(160, 160, 160, 0.35);
+  
+    box-shadow:
+      0 12px 28px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  
+  /* ===== Headings ===== */
+  .silver-dialog h1,
+  .silver-dialog h2,
+  .silver-dialog h3 {
+    text-align: center;
+    color: #2f2f2f;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* ===== Inputs ===== */
+  .silver-dialog .form-control {
+    background: #f8f9fa;
+    border: 1px solid #c6c9ce;
+    border-radius: 10px;
+  }
+  
+  .silver-dialog .form-control:focus {
+    background: #ffffff;
+    border-color: #9aa3ad;
+    box-shadow: 0 0 0 0.15rem rgba(120, 130, 140, 0.25);
+  }
+  
+  /* ===== Buttons ===== */
+  .silver-dialog .btn-primary {
+    background: linear-gradient(180deg, #7b8794, #5f6b78);
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .silver-dialog .btn-primary:hover {
+    background: linear-gradient(180deg, #6e7a87, #545f6c);
+  }

@@ -1,0 +1,155 @@
+
+<div class="content">
+<div class="container-fluid">
+  <!-- Page Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4" >
+    <h4 class="mb-0">📦 Stock Management</h4>
+    <button class="btn btn-sm btn-success mb-3" data-bs-toggle="modal" data-bs-target="#stockModal" data-role="admin" >
+      ➕ Add Stock
+    </button>
+  </div>
+
+  <!-- Stock Summary -->
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="text-muted">Total Products</h6>
+          <h4 id="totalProducts">–</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="text-muted">Total Stock</h6>
+          <h4 id="totalStock">–</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="text-muted">Low Stock Items</h6>
+          <h4 class="text-danger" id="lowStock">–</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="text-muted">Last Updated</h6>
+          <h4 id="lastUpdated">–</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stock Table -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h6 class="mb-3">Product Stock List</h6>
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>Product Code</th>
+              <th>Product Name</th>
+              <th>Category</th>
+              <th>Stock</th>
+              <th>Min Stock</th>
+              <th>Harga</th>
+              <th>Status</th>
+              <th class="text-end">Action</th>
+            </tr>
+          </thead>
+          <tbody id="stockTable">
+            <tr>
+              <td colspan="7" class="text-center text-muted">
+                No stock data loaded
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="stockModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="stockModalTitle">Add Stock</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="stockForm">
+
+          <!-- hidden stock id -->
+          <input type="hidden" id="stock_id" />
+          <input type="hidden" id="form_mode" value="add" />
+
+          <!-- Movement type (ONLY for edit) -->
+          <div class="mb-3 d-none" id="movementWrapper">
+            <label class="form-label">Action</label>
+            <select id="movement_type" class="form-select">
+              <option value="RESTOCK">Restock</option>
+              <option value="REFUND">Return</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Item Name</label>
+            <input id="item_name" class="form-control" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select id="category" class="form-select" required>
+              <option value="">Select category</option>
+              <option value="Mainan">Mainan</option>
+              <option value="Tabletop Toys">Tabletop Toys</option>
+              <option value="Botol Tower">Botol Tower</option>
+              <option value="Lain Lain">Lain Lain</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Quantity</label>
+            <input id="quantity" type="number" class="form-control" required />
+          </div>
+
+          <div class="mb-3" data-role="admin">
+            <label class="form-label">Buying Price</label>
+            <input id="buying_price" type="number" step="0.01" class="form-control"/>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Selling Price</label>
+            <input
+              id="price"
+              type="number"
+              step="0.01"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">
+            Save
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

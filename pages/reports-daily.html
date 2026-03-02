@@ -1,0 +1,209 @@
+<div class="content">
+  <div class="container-fluid">
+
+    <!-- Page Title -->
+    <div class="mb-3 mt-3">
+      <h4 class="mb-0">📊 Profit Dashboard</h4>
+    </div>
+  <!-- Dashboard Summary Cards -->
+  <div class="row mb-4">
+
+    <!-- Total Transactions -->
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <div class="text-muted small">Total Transactions</div>
+          <div id="totalTxn"
+              class="fs-4 fw-bold text-dark">
+            0
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Transactions -->
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <div class="text-muted small">Barang Terjual</div>
+          <div id="totalSales"
+              class="fs-4 fw-bold text-dark">
+            0
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gross Profit -->
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <div class="text-muted small">Gross Profit</div>
+          <div id="grossProfit"
+              class="fs-4 fw-bold text-success">
+            Rp 0
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Net Profit -->
+    <div class="col-md-3" data-role="admin">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <div class="text-muted small">Net Profit</div>
+          <div id="netProfit"
+              class="fs-4 fw-bold text-primary">
+            Rp 0
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+
+      <div class="row align-items-end g-2">
+
+        <!-- Month -->
+        <div class="col-md-2">
+          <label class="form-label form-label-sm">From</label>
+          <input type="date" id="filterStartDate" class="form-control form-control-sm" />
+        </div>
+  
+        <!-- End Date -->
+        <div class="col-md-2">
+          <label class="form-label form-label-sm">To</label>
+          <input type="date" id="filterEndDate" class="form-control form-control-sm" />
+        </div>
+        
+        <!-- Category -->
+        <!-- <div class="col-md-2">
+          <label class="form-label form-label-sm">Category</label>
+          <select id="filterCategory"
+          class="form-select"
+         >
+  </select>
+          </select>
+        </div> -->
+
+        <!-- Search -->
+        <div class="col-md-4">
+          <label class="form-label form-label-sm">Search</label>
+          <input
+            type="text"
+            id="filterSearch"
+            class="form-control form-control-sm"
+            placeholder="Search transaction ID or name...">
+        </div>
+
+        <!-- Button -->
+        <div class="col-md-2">
+          <button
+            class="btn btn-primary btn-sm w-100"
+            onclick="loadDashboard()">
+            Search
+          </button>
+        </div>
+        <div class="col-md-2">
+          <button onclick="downloadSalesExcel()"
+          class="btn btn-success btn-sm w-100">
+        Download Excel
+        </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Profit Table -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Transaction ID</th>
+        <th>Name</th>
+        <th>Marketplace</th>
+        <th>Nama Toko</th>
+        <th>Kurir   </th>
+        <th class="text-end text-success">Gross Profit</th>
+        <th class="text-end text-primary" data-role="admin">Net Profit</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+
+    <tbody id="profitTable">
+      <tr>
+        <td colspan="6" class="text-center text-muted">
+          No data loaded
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="modal fade"
+        id="detailModal"
+        tabindex="-1">
+
+    <div class="modal-dialog modal-xl">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+
+        <h5 class="modal-title">
+        Transaction Detail
+        </h5>
+
+        <button class="btn-close"
+                data-bs-dismiss="modal">
+        </button>
+
+        </div>
+
+        <div class="modal-body">
+
+        <table class="table table-striped">
+
+        <thead>
+
+        <tr>
+        <th>Category</th>
+        <th>Product</th>
+
+        
+
+        <th class="text-end">Qty</th>
+
+        <th class="text-end">Price</th>
+
+        <th class="text-end">Subtotal</th>
+
+        
+
+        <th>Marketplace</th>
+        <th>Nama Toko</th>
+        <th class="text-end">Fee %</th>
+        <th class="text-end text-warning">Biaya Layanan</th>
+        <th class="text-end text-primary" data-role="admin">Net Profit</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody id="detailTable">
+
+        </tbody>
+
+        </table>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

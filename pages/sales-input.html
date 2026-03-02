@@ -1,0 +1,108 @@
+<div class="container-fluid p-4">
+
+  <h1 class="mb-4">Sales Input</h1>
+
+  <!-- ===== ORDER INFO ===== -->
+  <div class="card mb-4">
+    <div class="card-header fw-bold">Order Info</div>
+    <div class="card-body row g-3">
+
+      <div class="col-md-4">
+        <label class="form-label">Nama Pelanggan</label>
+        <input id="nama_pelanggan" class="form-control">
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Kota Tujuan</label>
+        <input id="kota_tujuan" class="form-control">
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">No Pesanan</label>
+        <input id="no_pesanan" class="form-control">
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Marketplace</label>
+        <select id="marketplace" class="form-select"> 
+          <option value="">-- Select Marketplace --</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Nama Toko</label>
+        <select id="nama_toko" class="form-select">
+          <option>JSHOPPE STORE</option>
+          <option>HANNSBRO</option>
+          <option>KIDZ PLANET</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Kurir</label>
+        <select id="kurir" class="form-select">
+          <option>J&T</option>
+          <option>SPX</option>
+          <option>JNE</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Biaya Layanan</label>
+        <input id="biaya_layanan"
+          type="number"
+          value="0"
+          class="form-control"
+          readonly>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Diskon / Lain-lain</label>
+        <input id="diskon_lain"
+       type="number"
+       value="0"
+       class="form-control"
+       onchange="recalcGrandTotal()">
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Keterangan</label>
+        <input id="status" class="form-control">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== PRODUCTS ===== -->
+  <div class="card mb-4">
+    <div class="card-header d-flex justify-content-between">
+      <span class="fw-bold">Products</span>
+      <button class="btn btn-sm btn-primary" onclick="addItemRow()">+ Add Item</button>
+    </div>
+
+    <div class="card-body p-0">
+      <table class="table table-bordered m-0">
+        <thead class="table-light">
+          <tr>
+            <th>Kategori</th>
+            <th>Nama Barang</th>
+            <th width="80">Qty</th>
+            <th width="120">Harga</th>
+            <th width="140">Subtotal</th>
+            <th width="60"></th>
+          </tr>
+        </thead>
+        <tbody id="itemsBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== TOTAL ===== -->
+  <div class="d-flex justify-content-between align-items-center">
+    <h4>
+      Grand Total: Rp <span id="grandTotal">0</span>
+    </h4>
+    <button class="btn btn-success btn-lg" onclick="saveSales()">Save Sales</button>
+  </div>
+
+</div>
