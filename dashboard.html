@@ -1,64 +1,44 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>dashboard</title>
+  <!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dashboard</title>
 
-  <!-- bootstrap -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- dashboard styles -->
-  <link rel="stylesheet" href="assets/css/dashboard.css" />
-</head>
+    <!-- Dashboard styles -->
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+  </head>
 
-<body>
-  <div class="app">
-    <aside id="sidebar"></aside>
-    <main id="mainContent"></main>
-  </div>
+  <body>
+    <div class="app">
+      <!-- Sidebar will be loaded dynamically -->
+      <aside id="sidebar"></aside>
 
-  <!-- scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="assets/js/config.js"></script>
-  <script src="assets/js/auth.js"></script>
-  <script src="assets/js/guard.js"></script>
-  <script>
-    document.addeventlistener("domcontentloaded", () => {
-      // wait until current_user_roles is set by guard.js
-      const interval = setinterval(() => {
-        if (!window.current_user_roles) return; // not ready yet
+      <!-- Main content -->
+      <main id="mainContent"></main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     
-        clearinterval(interval); // stop waiting
-    
-        const roles = window.current_user_roles;
-    
-        document.queryselectorall("[data-role]").foreach(el => {
-          const allowedroles = el.getattribute("data-role").split(",");
-          const hasaccess = allowedroles.some(r => roles.includes(r));
-    
-          if (!hasaccess) {
-            el.style.display = "none";
-          } else {
-            el.style.display = "";
-          }
-        });
-    
-      }, 50); // check every 50ms until roles are ready
-    });
-    </script>
-  <script src="assets/js/role.js"></script>
-  <script src="assets/js/users.js"></script>
-  <script src="assets/js/stock.js"></script>
-  <script src="assets/js/sales.js"></script>
-  <script src="assets/js/reports.js"></script>
-  <script src="assets/js/movement.js"></script>
-  <script src="assets/js/platform.js"></script>
-  <script src="assets/js/dashboard.js"></script>
-  
-</body>
-</html>
+    <!-- Project scripts -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/guard.js"></script>
+    <script src="assets/js/role.js"></script>
+    <script src="assets/js/stock.js"></script>
+    <script src="assets/js/sales.js"></script>
+    <script src="assets/js/reports.js"></script>
+    <script src="assets/js/movement.js"></script>
+    <script src="assets/js/platform.js"></script>
+      <script src="assets/js/users.js"></script>
+        <script src="assets/js/dashboard.js"></script>
+  </body>
+  </html>

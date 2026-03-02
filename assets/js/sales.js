@@ -267,8 +267,8 @@ function recalcGrandTotal() {
     totalCost += Number(stockItem.buying_price || 0) * qty;
   });
 
-  window.currentPureNetProfit = subtotal - totalCost;
-  currentNetProfit = grandTotal - totalCost;
+  window.currentPureNetProfit = subtotal - totalCost - biaya - diskon;
+  currentNetProfit = subtotal - totalCost;
 }
 
 /* =========================
@@ -287,12 +287,14 @@ function calculateProfits(subtotal, grandTotal) {
     if (!stockItem) return;
 
     const buyingPrice = Number(stockItem.buying_price || 0);
-
     totalCost += buyingPrice * qty;
   });
 
-  const pureNetProfit = subtotal - totalCost;
-  const finalNetProfit = grandTotal - totalCost;
+    const biaya = Number(document.getElementById("biaya_layanan")?.value || 0);
+    const diskon = Number(document.getElementById("diskon_lain")?.value || 0);
+
+    const pureNetProfit = subtotal - totalCost - biaya - diskon;
+    const finalNetProfit = subtotal - totalCost - biaya - diskon;
 
   return {
     pureNetProfit,

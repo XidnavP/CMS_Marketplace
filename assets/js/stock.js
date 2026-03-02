@@ -50,31 +50,48 @@ window.initStockPage = function () {
       alert("Stock created");
 
     } else {
-      // 🟢 EDIT MODE
+        // 🟢 EDIT MODE
+        const movementType = document.getElementById("movement_type").value;
 
-      const movementType = document.getElementById("movement_type").value;
+        // 🔒 Fetch current stock first to validate
+        const { data: currentStockData, error: stockFetchError } = await supabaseClient
+          .schema("inventory")
+          .from("stock")
+          .select("quantity")
+          .eq("id", stockId)
+          .single();
 
-      const { error } = await supabaseClient.rpc(
-        "apply_stock_movement",
-        {
-          p_stock_id: stockId,
-          p_movement_type: movementType,
-          p_qty: quantity,
-          p_buying_price: movementType === "RESTOCK" ? buying_price : null,
-          p_notes: "Manual edit"
+        if (stockFetchError) return alert(stockFetchError.message);
+
+        const currentStock = currentStockData.quantity;
+
+        // 🔒 Prevent reducing stock below 0
+        if (movementType === "RESTOCK" && currentStock + quantity < 0) {
+          return alert("Error: Cannot reduce stock below 0!");
         }
-      );
 
-      if (error) return alert(error.message);
+        // 🔄 Apply movement safely
+        const { error } = await supabaseClient.rpc(
+          "apply_stock_movement",
+          {
+            p_stock_id: stockId,
+            p_movement_type: movementType,
+            p_qty: quantity,
+            p_buying_price: movementType === "RESTOCK" ? buying_price : null,
+            p_notes: "Manual edit"
+          }
+        );
 
-      // Optional update selling price
-      await supabaseClient
-        .schema("inventory")
-        .from("stock")
-        .update({ price })
-        .eq("id", stockId);
+        if (error) return alert(error.message);
 
-      alert("Stock updated");
+        // Optional update selling price
+        await supabaseClient
+          .schema("inventory")
+          .from("stock")
+          .update({ price })
+          .eq("id", stockId);
+
+        alert("Stock updated");
     }
 
     bootstrap.Modal.getOrCreateInstance(

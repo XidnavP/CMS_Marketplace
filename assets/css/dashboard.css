@@ -108,3 +108,21 @@
 .sidebar .logout-btn:hover {
   background-color: rgba(255, 255, 255, 0.12);
 }
+
+
+.hidden-role {
+  display: none !important;
+}
+
+
+.sidebar .menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .menu a {
+  display: flex ;
+  align-items: center;
+  gap: 12px;
+}
+
