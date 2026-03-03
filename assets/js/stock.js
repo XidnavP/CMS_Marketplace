@@ -167,7 +167,7 @@ window.renderStockTable = function (data) {
   </button>
 
   <button class="btn btn-sm btn-outline-danger"
-    onclick="deleteStock('${item.id}')">
+    onclick="deleteStock('${item.id}')" data-role = "admin">
     Delete
   </button>
       </td>
