@@ -248,7 +248,7 @@ function recalcGrandTotal() {
 
   const diskon = Number(document.getElementById("diskon_lain").value || 0);
 
-  const grandTotal = subtotal + biaya - diskon;
+  const grandTotal = subtotal - biaya - diskon;
 
   document.getElementById("grandTotal").textContent =
     grandTotal.toLocaleString("id-ID");
