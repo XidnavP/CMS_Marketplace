@@ -57,20 +57,11 @@
 
 .sidebar nav,
 .sidebar.menu{
-  padding-top: 56px;
+  padding-top: 0px;
   
 }
 
 
-.toggle-btn {
-  position: absolute;
-  top: 12px;
-  right:12px;
-  color: #f8f9fa;           /* light icon */
-  background: transparent;
-  border: none;
-  font-size: 1.25rem;
-}
 
 /* Optional hover */
 .toggle-btn:hover {
@@ -126,3 +117,33 @@
   gap: 12px;
 }
 
+
+/* Keep hamburger floating top right */
+.toggle-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: #f8f9fa;
+  cursor: pointer;
+}
+
+/* Center logo below hamburger */
+.sidebar-logo {
+  text-align: center;
+  padding-top: 60px; /* space below hamburger */
+  padding-bottom: 20px;
+}
+
+.sidebar-logo img {
+  height: 70px;   /* 🔥 bigger logo */
+  object-fit: contain;
+  transition: 0.3s ease;
+}
+
+/* Smaller when collapsed */
+.sidebar.collapsed .sidebar-logo img {
+  height: 40px;
+}
