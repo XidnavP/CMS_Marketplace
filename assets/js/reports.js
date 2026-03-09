@@ -103,6 +103,13 @@ function fillDashboard(data) {
             Detail
             </button>
         </td>
+        <td>
+            <button
+            class="btn btn-sm btn-warning" data-role="admin"
+            onclick="voidTransaction('${row.id}')">
+            Void
+            </button>
+        </td>
         `;
 
         tbody.appendChild(tr);
@@ -408,3 +415,22 @@ async function downloadSalesExcel() {
     );
 
 }
+
+async function voidTransaction(id) {
+
+    if (!confirm("Cancel this transaction?")) return;
+  
+    const { error } = await supabaseClient.rpc(
+      "void_sales_transaction",
+      { p_sales_id: id }
+    );
+  
+    if (error) {
+      alert(error.message);
+      return;
+    }
+  
+    alert("Transaction cancelled");
+  
+    loadReport(); // reload table
+  }
