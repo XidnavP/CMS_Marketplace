@@ -147,3 +147,10 @@
 .sidebar.collapsed .sidebar-logo img {
   height: 40px;
 }
+
+.product-col{
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

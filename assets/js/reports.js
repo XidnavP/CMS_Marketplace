@@ -88,7 +88,7 @@ function fillDashboard(data) {
 
         tr.innerHTML =
         `
-        <td>${formatDate(row.txn_date)}</td>
+        <td>${row.txn_date}</td>
         <td>${row.transaction_id}</td>
         <td>${row.name}</td>
         <td>${row.marketplace}</td>

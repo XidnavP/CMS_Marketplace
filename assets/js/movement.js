@@ -163,7 +163,9 @@ function renderMovementTable(data) {
 
         let row =
             `<tr>
-                <td>${item.item_name}</td>
+                <td class="product-col" title="${item.item_name}">
+                    ${item.item_name}
+                </td>
                 <td>${formatNumber(item.initial_stock)}</td>
             `;
 
