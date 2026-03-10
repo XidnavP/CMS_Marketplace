@@ -423,7 +423,19 @@ function filterAndRenderMovement() {
             );
 
     }
+    // 🔍 DEBUG LOGS
+    // console.log("Total rows:", movementData.length);
 
+    // console.log(
+    //     "Unique items TOTAL:",
+    //     new Set(movementData.map(r => r.item_id)).size
+    // );
+
+    // console.log(
+    //     "Unique items AFTER FILTER:",
+    //     new Set(filtered.map(r => r.item_id)).size
+    // );
+    
     const pivoted =
         pivotMovement(filtered);
 
