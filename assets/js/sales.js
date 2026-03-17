@@ -415,7 +415,7 @@ async function saveSales() {
       subtotal: Number(row.querySelector(".subtotal").value)
     });
   });
-
+  console.log(items);
   const { error } = await supabaseClient.rpc(
     "create_sales_transaction",
     {
