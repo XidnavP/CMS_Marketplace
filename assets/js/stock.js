@@ -110,6 +110,8 @@ window.initStockPage = function () {
   });
 };
 
+
+
 window.loadStockData = async function () {
   console.log("📦 Loading stock data...");
 
@@ -129,7 +131,7 @@ window.loadStockData = async function () {
   window.stockData = data
   window.renderCategoryFilter(data);
   window.renderStockTable(data);
-  window.renderStockSummary(data);
+  await window.renderStockSummary(data);
 };
 
 window.renderStockTable = function (data) {
@@ -182,17 +184,17 @@ window.renderStockTable = function (data) {
   `).join("");
 };
 
-window.renderStockSummary = function (data) {
+window.renderStockSummary = async function (data) {
   document.getElementById("totalProducts").textContent = data.length;
   document.getElementById("totalStock").textContent =
     data.reduce((sum, i) => sum + i.quantity, 0);
   document.getElementById("lowStock").textContent =
     data.filter(i => i.quantity <= 5).length;
 
-  document.getElementById("lastUpdated").textContent =
-    data[0]?.created_at
-      ? new Date(data[0].created_at).toLocaleString()
-      : "-";
+  // 🔥 Get last update from stock_movement
+  const lastMovementTime = await window.loadLastMovementTime();
+
+  document.getElementById("lastUpdated").textContent = lastMovementTime;
 };
 
 window.editStock = function(id, item_name, category, buying_price, price) {
@@ -366,3 +368,21 @@ document.addEventListener("input", function(e){
   }
 
 });
+
+window.loadLastMovementTime = async function () {
+  const { data, error } = await supabaseClient
+    .from("stock_movements")
+    .select("created_at")
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .single();
+
+  if (error) {
+    console.error("Failed to get last movement:", error);
+    return "-";
+  }
+
+  return data?.created_at
+    ? new Date(data.created_at).toLocaleString()
+    : "-";
+};
